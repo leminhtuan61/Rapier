@@ -89,11 +89,11 @@ var EvictionRatio = 0.2      // More aggressive eviction
 │   TCP Server     │  I/O Multiplexing│   Config   │
 │   (Port :3000)   │  (epoll/kqueue)  │  Manager   │
 ├──────────────────┼──────────────────┼────────────┤
-│  Dictionary      │   Data Structures │ Expiration │
-│  Storage         │  • Bloom Filter   │  Manager   │
-│                  │  • Sorted Sets    │            │
-│                  │  • B+ Trees       │            │
-│                  │  • Skip Lists     │            │
+│  Dictionary      │   Data Structures│ Expiration │
+│  Storage         │  • Bloom Filter  │  Manager   │
+│                  │  • Sorted Sets   │            │
+│                  │  • B+ Trees      │            │
+│                  │  • Skip Lists    │            │
 └──────────────────┴──────────────────┴────────────┘
 ```
 
