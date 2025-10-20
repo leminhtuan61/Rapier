@@ -1,7 +1,9 @@
+//go:build linux
+
 package io_multiplexing
 
 import (
-	"Rapier/internal/config"
+	"Nietzsche/internal/config"
 	"log"
 	"syscall"
 )

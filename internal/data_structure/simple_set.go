@@ -1,4 +1,4 @@
-package ds
+package data_structure
 
 type SimpleSet struct {
 	key  string
@@ -11,17 +11,19 @@ func NewSimpleSet(key string) *SimpleSet {
 		dict: make(map[string]struct{}),
 	}
 }
+
 func (s *SimpleSet) Add(members ...string) int {
-	add := 0
+	added := 0
 	for _, m := range members {
 		if _, exist := s.dict[m]; !exist {
 			s.dict[m] = struct{}{}
-			add++
+			added++
 		}
 	}
-	return add
+	return added
 }
-func (s *SimpleSet) Remove(members ...string) int {
+
+func (s *SimpleSet) Rem(members ...string) int {
 	removed := 0
 	for _, m := range members {
 		if _, exist := s.dict[m]; exist {
@@ -31,13 +33,7 @@ func (s *SimpleSet) Remove(members ...string) int {
 	}
 	return removed
 }
-func (s *SimpleSet) Members() []string {
-	m := make([]string, 0, len(s.dict))
-	for k, _ := range s.dict {
-		m = append(m, k)
-	}
-	return m
-}
+
 func (s *SimpleSet) IsMember(member string) int {
 	_, exist := s.dict[member]
 	if exist {
@@ -45,6 +41,11 @@ func (s *SimpleSet) IsMember(member string) int {
 	}
 	return 0
 }
-func (s *SimpleSet) Cardinality() int {
-	return len(s.dict)
+
+func (s *SimpleSet) Members() []string {
+	m := make([]string, 0, len(s.dict))
+	for k, _ := range s.dict {
+		m = append(m, k)
+	}
+	return m
 }

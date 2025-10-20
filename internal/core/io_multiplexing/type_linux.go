@@ -1,3 +1,5 @@
+//go:build linux
+
 package io_multiplexing
 
 import "syscall"

@@ -1,4 +1,4 @@
-package ds
+package data_structure
 
 type ZSet struct {
 	zskiplist *Skiplist

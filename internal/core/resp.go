@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
+	"strings"
 )
 
 const CRLF string = "\r\n"
@@ -12,12 +13,31 @@ var RespNil = []byte("$-1\r\n")
 
 // +OK\r\n => OK, 5
 func readSimpleString(data []byte) (string, int, error) {
-	return "", 0, errors.New("to be implemented")
+	pos := 1
+	for data[pos] != '\r' {
+		pos++
+	}
+	return string(data[1:pos]), pos + 2, nil
 }
 
 // :123\r\n => 123
 func readInt64(data []byte) (int64, int, error) {
-	return 0, 0, errors.New("to be implemented")
+	var res int64 = 0
+	pos := 1
+	var sign int64 = 1
+	if data[pos] == '-' {
+		sign = -1
+		pos++
+	}
+	if data[pos] == '+' {
+		pos++
+	}
+	for data[pos] != '\r' {
+		res = res*10 + int64(data[pos]-'0')
+		pos++
+	}
+
+	return sign * res, pos + 2, nil
 }
 
 func readError(data []byte) (string, int, error) {
@@ -32,7 +52,8 @@ func readLen(data []byte) (int, int) {
 
 // $5\r\nhello\r\n => "hello"
 func readBulkString(data []byte) (string, int, error) {
-	return "", 0, errors.New("to be implemented")
+	length, pos := readLen(data)
+	return string(data[pos:(pos + length)]), pos + length + 2, nil
 }
 
 // *2\r\n$5\r\nhello\r\n$5\r\nworld\r\n => {"hello", "world"}
@@ -40,9 +61,14 @@ func readArray(data []byte) (interface{}, int, error) {
 	length, pos := readLen(data)
 	var res []interface{} = make([]interface{}, length)
 
-	// implement start
-
-	// implement end
+	for i := range res {
+		elem, delta, err := DecodeOne(data[pos:])
+		if err != nil {
+			return nil, 0, err
+		}
+		res[i] = elem
+		pos += delta
+	}
 	return res, pos, nil
 }
 
@@ -65,6 +91,7 @@ func DecodeOne(data []byte) (interface{}, int, error) {
 	return nil, 0, nil
 }
 
+// RESP format data => raw data
 func Decode(data []byte) (interface{}, error) {
 	res, _, err := DecodeOne(data)
 	return res, err
@@ -83,6 +110,7 @@ func encodeStringArray(sa []string) []byte {
 	return []byte(fmt.Sprintf("*%d\r\n%s", len(sa), buf.Bytes()))
 }
 
+// raw data => RESP format data
 func Encode(value interface{}, isSimpleString bool) []byte {
 	switch v := value.(type) {
 	case string:
@@ -113,4 +141,19 @@ func Encode(value interface{}, isSimpleString bool) []byte {
 	default:
 		return RespNil
 	}
+}
+
+func ParseCmd(data []byte) (*Command, error) {
+	value, err := Decode(data)
+	if err != nil {
+		return nil, err
+	}
+
+	array := value.([]interface{})
+	tokens := make([]string, len(array))
+	for i := range tokens {
+		tokens[i] = array[i].(string)
+	}
+	res := &Command{Cmd: strings.ToUpper(tokens[0]), Args: tokens[1:]}
+	return res, nil
 }

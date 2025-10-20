@@ -1,7 +1,7 @@
-package ds
+package data_structure
 
 import (
-	"Rapier/internal/config"
+	"Nietzsche/internal/config"
 	"sort"
 )
 

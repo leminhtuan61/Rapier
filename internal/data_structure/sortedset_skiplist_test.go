@@ -1,9 +1,8 @@
-package ds
+package data_structure
 
 import (
-	"testing"
-
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 func TestZSet_Skiplist_GetRank(t *testing.T) {

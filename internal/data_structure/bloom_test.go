@@ -1,4 +1,4 @@
-package ds
+package data_structure
 
 import (
 	"github.com/stretchr/testify/assert"

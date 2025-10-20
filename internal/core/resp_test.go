@@ -1,11 +1,10 @@
 package core_test
 
 import (
-	"Rapier/internal/core"
+	"Nietzsche/internal/core"
 	"fmt"
-	"testing"
-
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 func TestSimpleStringDecode(t *testing.T) {
@@ -90,6 +89,28 @@ func TestEncodeString2DArray(t *testing.T) {
 	for i := 0; i < 3; i++ {
 		for j := 0; j < len(decode[i]); j++ {
 			assert.EqualValues(t, decode[i][j], decodeAgain.([]interface{})[i].([]interface{})[j])
+		}
+	}
+}
+
+func TestParseCmd(t *testing.T) {
+	cases := map[string]core.Command{
+		"*3\r\n$3\r\nput\r\n$5\r\nhello\r\n$5\r\nworld\r\n": core.Command{
+			Cmd:  "PUT",
+			Args: []string{"hello", "world"},
+		}}
+	for k, v := range cases {
+		cmd, _ := core.ParseCmd([]byte(k))
+		if cmd.Cmd != v.Cmd {
+			t.Fail()
+		}
+		if len(cmd.Args) != len(v.Args) {
+			t.Fail()
+		}
+		for i := 0; i < len(cmd.Args); i++ {
+			if cmd.Args[i] != v.Args[i] {
+				t.Fail()
+			}
 		}
 	}
 }
