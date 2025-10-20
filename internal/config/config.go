@@ -1,7 +1,7 @@
 package config
 
 var Protocol = "tcp"
-var Port = ":3000"
+var Port = ":9000"
 var MaxConnection = 20000
 var MaxKeyNumber int = 1000000
 var EvictionRatio = 0.1
