@@ -161,33 +161,6 @@ Rapier implements a comprehensive suite of high-performance data structures:
 - `CMS.INCRBY key item count` - Increment item count
 - `CMS.QUERY key item` - Query item count
 
-## 🧪 Testing
-
-### Run Test Suite
-
-```bash
-# Run all tests
-go test ./...
-
-# Run with verbose output
-go test ./... -v
-
-# Test specific package
-go test ./internal/data_structure/ -v
-```
-
-### Benchmark Tests
-
-```bash
-# Run all benchmarks
-go test -bench=. ./...
-
-# Test specific data structures
-go test -bench=. ./internal/data_structure/ -v
-
-# Test with memory allocation stats
-go test -bench=. -benchmem ./internal/data_structure/
-```
 
 ## 📊 Performance Benchmarks
 
