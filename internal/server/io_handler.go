@@ -1,8 +1,8 @@
 package server
 
 import (
-	"Nietzsche/internal/core"
-	"Nietzsche/internal/core/io_multiplexing"
+	"Rapier/internal/core"
+	"Rapier/internal/core/io_multiplexing"
 	"io"
 	"log"
 	"net"

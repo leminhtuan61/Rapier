@@ -1,10 +1,11 @@
 package core_test
 
 import (
-	"Nietzsche/internal/core"
+	"Rapier/internal/core"
 	"fmt"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestSimpleStringDecode(t *testing.T) {

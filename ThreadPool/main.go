@@ -65,7 +65,7 @@ func handleConnection(conn net.Conn) {
 	buf := make([]byte, 1000)
 	conn.Read(buf)
 	time.Sleep(1 * time.Second)
-	conn.Write([]byte("HTTP/1.1 200 OK\r\n\r\nEngineer Pro\r\n"))
+	conn.Write([]byte("HTTP/1.1 200 OK\r\n\r\nHello\r\n"))
 }
 
 func main() {

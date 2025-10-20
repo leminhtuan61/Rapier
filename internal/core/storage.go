@@ -1,6 +1,6 @@
 package core
 
-import "Nietzsche/internal/data_structure"
+import "Rapier/internal/data_structure"
 
 var dictStore *data_structure.Dict
 var zsetStore map[string]*data_structure.ZSet

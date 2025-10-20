@@ -1,7 +1,7 @@
 package core
 
 import (
-	"Nietzsche/internal/constant"
+	"Rapier/internal/constant"
 	"time"
 )
 

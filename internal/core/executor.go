@@ -1,8 +1,8 @@
 package core
 
 import (
-	"Nietzsche/internal/constant"
-	"Nietzsche/internal/data_structure"
+	"Rapier/internal/constant"
+	"Rapier/internal/data_structure"
 	"bytes"
 	"errors"
 	"fmt"

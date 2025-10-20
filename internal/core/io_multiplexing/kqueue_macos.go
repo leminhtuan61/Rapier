@@ -3,7 +3,7 @@
 package io_multiplexing
 
 import (
-	"Nietzsche/internal/config"
+	"Rapier/internal/config"
 	"log"
 	"syscall"
 )

@@ -1,7 +1,7 @@
 package core
 
 import (
-	"Nietzsche/internal/data_structure"
+	"Rapier/internal/data_structure"
 	"errors"
 )
 

@@ -1,7 +1,7 @@
 package server
 
 import (
-	"Nietzsche/internal/config"
+	"Rapier/internal/config"
 	"log"
 	"net"
 	"sync"

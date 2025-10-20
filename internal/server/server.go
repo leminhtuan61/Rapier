@@ -1,10 +1,10 @@
 package server
 
 import (
-	"Nietzsche/internal/config"
-	"Nietzsche/internal/constant"
-	"Nietzsche/internal/core"
-	"Nietzsche/internal/core/io_multiplexing"
+	"Rapier/internal/config"
+	"Rapier/internal/constant"
+	"Rapier/internal/core"
+	"Rapier/internal/core/io_multiplexing"
 	"hash/fnv"
 	"io"
 	"log"

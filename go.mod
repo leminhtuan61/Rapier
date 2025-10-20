@@ -1,10 +1,13 @@
 module Rapier
 
-go 1.24
+go 1.24.0
+
+toolchain go1.24.6
 
 require (
 	github.com/spaolacci/murmur3 v1.1.0
 	github.com/stretchr/testify v1.10.0
+	golang.org/x/sys v0.37.0
 )
 
 require (

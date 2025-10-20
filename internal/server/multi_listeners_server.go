@@ -1,13 +1,14 @@
 package server
 
 import (
-	"Nietzsche/internal/config"
+	"Rapier/internal/config"
 	"context"
-	"golang.org/x/sys/unix"
 	"log"
 	"net"
 	"sync"
 	"syscall"
+
+	"golang.org/x/sys/unix"
 )
 
 func createReusablePortListener(network, addr string) (net.Listener, error) {

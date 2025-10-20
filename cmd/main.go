@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Nietzsche/internal/server"
+	"Rapier/internal/server"
 	"log"
 	"net/http"
 	_ "net/http/pprof" // for profiling
